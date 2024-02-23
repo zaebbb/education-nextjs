@@ -2,7 +2,13 @@
 
 import React from 'react'
 
-type ThemeMode = 'dark' | 'light' | ''
+export type ThemeMode = 'dark' | 'light' | '' | 'system'
+
+export interface ModeTheme {
+  icon: string
+  label: string
+  value: ThemeMode
+}
 
 interface ThemeContextType {
   mode: ThemeMode
@@ -19,19 +25,26 @@ export function ThemeProvider (
   const [mode, setMode] = React.useState<ThemeMode>('')
 
   const handleThemeChange = () => {
-    if (mode === 'light') {
+    if (
+      localStorage.theme === 'dark' ||
+      (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
       setMode('dark')
       document.documentElement.classList.add('dark')
-    }
-
-    if (mode === 'dark') {
+      document.documentElement.classList.remove('light')
+    } else {
       setMode('light')
       document.documentElement.classList.add('light')
+      document.documentElement.classList.remove('dark')
     }
   }
 
   React.useEffect(() => {
     handleThemeChange()
+  }, [mode])
+
+  React.useEffect(() => {
+    console.log('MODE' , mode)
   }, [mode])
 
   return (
