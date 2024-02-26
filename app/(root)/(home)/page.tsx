@@ -6,62 +6,11 @@ import {HomePageFilters} from "@/constants/filters";
 import HomeFilters from "@/components/home/HomeFilters";
 import NoResult from "@/components/shared/NoResult";
 import QuestionCard from "@/components/cards/QuestionCard";
+import { getQuestions } from "@/lib/actions/question.action";
 
-const questions = [
-  {
-    _id: '1',
-    title: 'test',
-    tags: [
-      { _id: '1', name: 'test' },
-      { _id: '2', name: 'test' },
-    ],
-    author: {
-      _id: '1',
-      name: 'test',
-      picture: 'test',
-    },
-    upvotes: 10,
-    views: 100,
-    answers: [],
-    createdAt: new Date(),
-  },
-  {
-    _id: '2',
-    title: 'test',
-    tags: [
-      { _id: '1', name: 'test' },
-      { _id: '2', name: 'test' },
-    ],
-    author: {
-      _id: '1',
-      name: 'test',
-      picture: 'test',
-    },
-    upvotes: 10,
-    views: 100,
-    answers: [],
-    createdAt: new Date(),
-  },
-  {
-    _id: '2',
-    title: 'test',
-    tags: [
-      { _id: '1', name: 'test' },
-      { _id: '2', name: 'test' },
-    ],
-    author: {
-      _id: '1',
-      name: 'test',
-      picture: 'test',
-    },
-    upvotes: 3322333210,
-    views: 11132,
-    answers: [],
-    createdAt: new Date(),
-  },
-]
-
-export default function Home() {
+export default async function Home() {
+  const result = await getQuestions({})
+  
   return (
     <>
       <div className={'flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center'}>
@@ -96,7 +45,7 @@ export default function Home() {
       <HomeFilters />
 
       <div className={"mt-10 flex w-full flex-col gap-6"}>
-        {questions.map(question => (
+        {result?.questions.map(question => (
           <QuestionCard
             key={question._id}
             _id={question._id}
@@ -110,9 +59,9 @@ export default function Home() {
           />
         ))}
 
-        {!questions.length && (
+        {!result?.questions.length && (
           <NoResult
-            title={'There&apos;s no question to show'}
+            title={`There's no question to show`}
             description={'Be the first to break the silence! 🚀 Ask a Question and kickstart the discussion. our query could be the next big thing others learn from. Get involved! 💡'}
             link={'/ask-question'}
             linkTitle={'Ask a Question'}
