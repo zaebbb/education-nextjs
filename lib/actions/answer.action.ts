@@ -43,9 +43,6 @@ export const getAnswers = async (
     
     const {
       questionId,
-      page,
-      pageSize,
-      sortBy,
     } = params
 
     const answers = await Answer

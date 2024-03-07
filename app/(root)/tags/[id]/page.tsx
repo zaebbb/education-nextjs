@@ -4,7 +4,6 @@ import LocalSearchbar from '@/components/shared/search/LocalSearchbar'
 import { IQuestion } from '@/database/question.model'
 import { getQuestionByTagId } from '@/lib/actions/tag.action'
 import { URLProps } from '@/types'
-import { ObjectId } from 'mongoose'
 import React from 'react'
 
 const Page = async ({ params, searchParams }: URLProps) => {

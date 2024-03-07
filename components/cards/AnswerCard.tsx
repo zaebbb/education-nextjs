@@ -24,7 +24,6 @@ const AnswerCard = (props: Props) => {
   const {
     _id,
     author,
-    clerkId,
     createdAt,
     question,
     upvotes,
