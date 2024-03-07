@@ -37,7 +37,7 @@ const Page = async ({ params, searchParams }: URLProps) => {
             title={question.title}
             tags={question.tags as unknown as Tag[]}
             author={question.author as unknown as Author}
-            upvotes={question.upvotes as string[]}
+            upvotes={question.upvotes as unknown as string[]}
             views={question.views}
             answers={question.answers}
             createdAt={question.createdAt}
