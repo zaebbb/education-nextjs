@@ -11,7 +11,6 @@ type Props = {
 const AnswerTab = async (props: Props) => {
   const {
     clerkId,
-    searchParams,
     userId,
   } = props
 

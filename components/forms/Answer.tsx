@@ -22,7 +22,6 @@ type Props = {
 const Answer = (props: Props) => {
   const {
     authorId,
-    question,
     questionId,
   } = props
 

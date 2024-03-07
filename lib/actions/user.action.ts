@@ -83,9 +83,9 @@ export const deleteUser = async (
       throw new Error('User Not Found')
     }
 
-    const userQuestionIds = await Question.find({
-      author: user._id,
-    }).distinct('_id')
+    // const userQuestionIds = await Question.find({
+    //   author: user._id,
+    // }).distinct('_id')
 
     await Question.deleteMany({
       author: user._id,
@@ -172,9 +172,6 @@ export const getSavedQuestions = async (
 
     const {
       clerkId,
-      filter,
-      page,
-      pageSize,
       searchQuery,
     } = params
 
@@ -249,8 +246,6 @@ export const getUserQuestions = async (params: GetUserStatsParams) => {
 
     const {
       userId,
-      page = 1,
-      pageSize = 10,
     } = params
 
     const totalQuestions = await Question.countDocuments({ 
@@ -279,8 +274,6 @@ export const getUserAnswers = async (params: GetUserStatsParams) => {
 
     const {
       userId,
-      page = 1,
-      pageSize = 10,
     } = params
 
     const totalAnswers = await Answer.countDocuments({ 

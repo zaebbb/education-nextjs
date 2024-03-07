@@ -15,7 +15,6 @@ export const getTopInteractedTags = async (
 
     const {
       userId,
-      limit = 3,
     } = params
 
     const user = await User.findById(userId)
@@ -67,8 +66,6 @@ export const getQuestionByTagId = async (
 
     const {
       tagId,
-      page = 1,
-      pageSize = 10,
       searchQuery,
     } = params
 
