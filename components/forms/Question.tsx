@@ -21,6 +21,7 @@ import {Badge} from "@/components/ui/badge";
 import Image from "next/image";
 import {createQuestion} from "@/lib/actions/question.action";
 import { useRouter, usePathname } from 'next/navigation'
+import { useTheme } from '@/context/ThemeProvider';
 
 type Props = {
   mongoUserId: string
@@ -34,6 +35,7 @@ const Question = (props: Props) => {
   } = props
 
   const editorRef = React.useRef(null);
+  const { mode } = useTheme()
   const [isSubmitting, setIsSubmitting] = React.useState(false)
   const router = useRouter()
   const pathname = usePathname()
@@ -177,7 +179,9 @@ const Question = (props: Props) => {
                       'code codesample | bold italic forecolor | alignleft aligncenter ' +
                       'alignright alignjustify | bullist numlist outdent indent | ' +
                       'removeformat | help',
-                    content_style: 'body { font-family:Inter; font-size:16px }'
+                    content_style: 'body { font-family:Inter; font-size:16px }',
+                    skin: mode === 'dark' ? 'oxide-dark' : 'oxide',
+                    content_css: mode === 'dark' ? 'dark' : 'light',
                   }}
                 />
               </FormControl>
