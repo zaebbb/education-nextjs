@@ -15,10 +15,11 @@ type Author = Tag & {
 
 type Props = {
   _id: string
+  clerkId?: string
   title: string
   tags: Tag[]
   author: Author
-  upvotes: number
+  upvotes: string[]
   views: number
   answers: Array<object>
   createdAt: Date
@@ -76,7 +77,7 @@ const QuestionCard = (props: Props) => {
         <Metric
           imgUrl={'/assets/icons/like.svg'}
           alt={'Upvotes'}
-          value={formatAndDivideNumber(upvotes)}
+          value={formatAndDivideNumber(upvotes.length)}
           title={' Votes'}
           className={'small-medium text-dark400_light800'}
         />

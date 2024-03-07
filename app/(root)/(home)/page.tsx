@@ -7,9 +7,15 @@ import HomeFilters from "@/components/home/HomeFilters";
 import NoResult from "@/components/shared/NoResult";
 import QuestionCard from "@/components/cards/QuestionCard";
 import { getQuestions } from "@/lib/actions/question.action";
+import { auth } from "@clerk/nextjs";
 
 export default async function Home() {
   const result = await getQuestions({})
+
+  const { userId } = auth()
+
+  console.log(userId);
+  
   
   return (
     <>
