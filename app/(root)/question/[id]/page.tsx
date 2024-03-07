@@ -11,8 +11,9 @@ import { auth } from '@clerk/nextjs';
 import { getUserById } from '@/lib/actions/user.action';
 import AllAnswers from '@/components/shared/AllAnswers';
 import Votes from '@/components/shared/Votes';
+import { ParamsProps } from '@/types';
 
-const Page = async ({ params }) => {
+const Page = async ({ params }: ParamsProps) => {
   const question = await getQuestionById({
     questionId: params.id,
   })

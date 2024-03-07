@@ -4,6 +4,7 @@ import LocalSearchbar from '@/components/shared/search/LocalSearchbar'
 import { IQuestion } from '@/database/question.model'
 import { getQuestionByTagId } from '@/lib/actions/tag.action'
 import { URLProps } from '@/types'
+import { ObjectId } from 'mongoose'
 import React from 'react'
 
 const Page = async ({ params, searchParams }: URLProps) => {
@@ -17,7 +18,7 @@ const Page = async ({ params, searchParams }: URLProps) => {
   return (
     <>
       <h1 className={'h1-bold text-dark100_light900'}>
-        {result.tagTitle}
+        {result?.tagTitle}
       </h1>
 
       <div className={'mt-11 w-full'}>
