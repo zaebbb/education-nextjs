@@ -1,4 +1,4 @@
-import QuestionCard from '@/components/cards/QuestionCard'
+import QuestionCard, { Author, Tag } from '@/components/cards/QuestionCard'
 import NoResult from '@/components/shared/NoResult'
 import LocalSearchbar from '@/components/shared/search/LocalSearchbar'
 import { IQuestion } from '@/database/question.model'
@@ -35,9 +35,9 @@ const Page = async ({ params, searchParams }: URLProps) => {
             key={question._id}
             _id={question._id}
             title={question.title}
-            tags={question.tags}
-            author={question.author}
-            upvotes={question.upvotes}
+            tags={question.tags as unknown as Tag[]}
+            author={question.author as unknown as Author}
+            upvotes={question.upvotes as string[]}
             views={question.views}
             answers={question.answers}
             createdAt={question.createdAt}
